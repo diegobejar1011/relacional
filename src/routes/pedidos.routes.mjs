@@ -5,9 +5,9 @@ import {verificarJWT} from '../middlewares/auth.middleware.mjs';
 
 const router = Router();
 
-router.get("/",pedidosController.getPedidos);
+router.get("/", verificarJWT, pedidosController.getPedidos);
 router.post("/", verificarJWT, pedidosController.createPedido);
-router.get("/pedido/:id", pedidosController.getByIdPedido);
+router.get("/pedido/:id", verificarJWT, pedidosController.getByIdPedido);
 router.delete("/eliminarFisico/:id", verificarJWT ,pedidosController.deleteFisico);
 router.delete("/eliminarLogico/:id", verificarJWT ,pedidosController.deleteLogico);
 router.patch("/actualizarParcial/:id", verificarJWT ,pedidosController.updatePartialPedido);
